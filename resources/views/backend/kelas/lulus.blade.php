@@ -6,84 +6,48 @@
             <h5 class="mb-0" style="font-size: 40px">
                 <b>{{ $title }}</b>
             </h5>
-
+            <a href="/kelas/add" type="button" class="btn rounded-pill btn-primary justify-content-end"
+                style="margin-left: 70%;">Add</a>
         </div>
-
-        <div class="row ">
-
-            <div class="col-md-6">
-
-                <div class="row justify-content-end">
-                    <label for="" style="margin-right: -17%;">From</label>
-
-                    <div class="col-md-5">
-
-                        <select class="form-control" name="kelas_id_from" id="kelas_id_from" onchange="tampil_data_from()"
-                            required>
-                            <option value="" selected>-- Pilih Kelas --</option>
-                            @foreach ($kelas as $s)
-                                <option value="{{ $s->id }}">{{ $s->nama_kelas }}</option>
-                            @endforeach
-                        </select>
-
-                    </div>
-                    {{-- <label class="form-label" for="kelas_id">Kelas</label> --}}
-                    <div class="col-md-5">
-                        {{-- <label class="form-label" for="kelas_id">Kelas</label> --}}
-                        <select class="form-control" name="jurusan_id_from" id="jurusan_id_from"
-                            onchange="tampil_data_from()" required>
-                            <option value="" selected>-- Pilih Jurusan --</option>
-                            @foreach ($jurusan as $j)
-                                <option value="{{ $j->id }}">{{ $j->nama_jurusan }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2">
-                <div id="open" class="position-absolute top-0 start-50 translate-middle" style="margin-top: 5%">
-                    <div id="loading-image" class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-                <br>
-                <button class="btn btn-success" id="lulusbyId" style="width: 100%;"><i
-                        class='bx bxs-chevron-right-circle'></i> Lulus </button>
-
-
-                {{-- <button class="btn btn-warning" id="backkelasbyId" style="width: 100%;"><i class='bx bx-rotate-right'></i>
-                    Back</button> --}}
-            </div>
-
+        <div class="container mt-4 ">
+            <table id="datatable" class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama Madrasah/Sekolah</th>
+                        <th>Jml GTY Sertifikasi</th>
+                        <th>Jml GTY Non Sertifikasi</th>
+                        <th>Jml GTT</th>
+                        <th>Jml PTY</th>
+                        <th>Jml PNS</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
-        <br>
+        
 
 
-        <div class="row">
 
-            <div class="col-md-12">
 
-                <div class="container mt-4 ">
-                    <table id="datatable" class="table table-striped ">
-                        <thead>
-                            <tr>
-                                <th><input type="checkbox" id="checkAllFrom"></th>
-                                <th>No</th>
-                                <th>Kelas</th>
-                                <th>Nama Lengkap</th>
-                            </tr>
-                        </thead>
-                        <tbody id="show_data">
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-        </div>
 
-    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
 
     <script>

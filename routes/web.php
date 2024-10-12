@@ -7,6 +7,7 @@ use App\Http\Controllers\SnapController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\TenagaController;
 use App\Http\Controllers\TahunController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TagihanController;
@@ -61,6 +62,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/siswa/delete/{id}', [SiswaController::class, 'delete'])->name('siswa.delete');
     Route::get('/alumni', [SiswaController::class, 'alumni'])->name('alumni');
     Route::get('/siswa/tunggakan/{id}', [SiswaController::class, 'tunggakan'])->name('siswa.tunggakan');
+    //Tenaga Pendidik
+    Route::get('/tenaga', [TenagaController::class, 'index'])->name('tenaga');
+    Route::get('/tenagaAdd', [TenagaController::class, 'add'])->name('tenaga.add');
+    Route::post('/tenaga/add', [TenagaController::class, 'addTenaga'])->name('tenaga.addproses');
+    Route::get('/tenaga/edit/{id}', [TenagaController::class, 'edit'])->name('tenaga.edit');
+    Route::post('/tenaga/editProses', [TenagaController::class, 'editProses'])->name('tenaga.editProses');
+    Route::get('/tenaga/delete/{id}', [TenagaController::class, 'delete'])->name('tenaga.delete');
     //Tahun AJaran
     Route::get('/tahun', [TahunController::class, 'view'])->name('tahun');
     Route::get('/tahunAdd', [TahunController::class, 'add'])->name('tahun.add');
@@ -98,6 +106,7 @@ Route::middleware(['auth'])->group(function () {
     //kelas
     Route::get('/kelas', [KelasController::class, 'view'])->name('kelas');
     Route::get('/kelas/add', [KelasController::class, 'add'])->name('kelas.add');
+    Route::get('/tenagapendidik/add', [KelasController::class, 'add'])->name('tenagapendidik.add');
     Route::post('/kelas/proses', [KelasController::class, 'addkelas'])->name('kelas.addKelas');
     Route::get('/kelas/edit/{id}', [KelasController::class, 'edit'])->name('kelas.edit');
     Route::post('/kelas/editProses', [KelasController::class, 'editProses'])->name('kelas.editProses');

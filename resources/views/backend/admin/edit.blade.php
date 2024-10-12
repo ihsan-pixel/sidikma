@@ -54,7 +54,7 @@
                                                 @if ($r == 1)
                                                     Admin
                                                 @else
-                                                    Kepala Sekolah
+                                                    Pengurus LP. Ma'arif NU
                                                 @endif
                                             </option>
                                         @endforeach

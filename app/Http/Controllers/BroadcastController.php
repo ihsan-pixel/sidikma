@@ -11,7 +11,7 @@ class BroadcastController extends Controller
 {
     public function view()
     {
-        $data['title'] = "Broadcast";
+        $data['title'] = "Sarana Prasarana";
         $data['siswa'] = DB::select("select no_ortu, nama_lengkap from users where role = '2'");
         return view('backend.broadcast.view', $data);
     }

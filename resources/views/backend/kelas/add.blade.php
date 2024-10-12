@@ -13,16 +13,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label" for="full_name">Nama Kelas</label>
+                                    <label class="form-label" for="full_name">Nama Asal Madrasah/Sekolah</label>
                                     <input type="text" class="form-control" id="nama_kelas" name="nama_kelas"
-                                        placeholder="Masukan Nama Kelas" required />
+                                        placeholder="Masukan Nama Madrasah/Sekolah" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="full_name">Keterangan</label>
-                                    <input type="text" class="form-control" id="keterangan" name="keterangan"
-                                        placeholder="Masukan Keterangan" required />
+                                    <input type="text" class="form-control" id="keterangan Jenjang" name="keterangan"
+                                        placeholder="Masukan Keterangan Jenjang" required />
                                 </div>
                             </div>
 

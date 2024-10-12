@@ -10,15 +10,15 @@
                         style="width: 100px; height: 100px;border-radius: 10%; margin-right: 4%;" alt="Gambar Kosong">
                 </div>
                 <div class="card-body">
-                    <form action="/siswa/editProses" method="POST" enctype="multipart/form-data">
+                    <form action="/tenaga/editProses" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <input type="text" name="id" value="{{ $siswa->id }}" hidden>
+                        <input type="text" name="id" value="{{ $tenaga->id }}" hidden>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label" for="nis">EWANUGK</label>
                                     <input type="text" class="form-control" id="nis" name="nis"
-                                        value="{{ $siswa->nis }}" placeholder="Masukan Nis" required />
+                                        value="{{ $tenaga->nis }}" placeholder="Masukan Nis" required />
                                 </div>
                             </div>
 

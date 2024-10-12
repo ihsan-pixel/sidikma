@@ -74,26 +74,26 @@ class PembayaranController extends Controller
                 DB::table('payment')->where('order_id', $ord->order_id)->update($data);
             }
         }
-        // foreach ($getOrderId as $ord) {
-        //     if ($ord->order_id != null) {
-        //         $getDataMidtrans = \Midtrans\Transaction::status($ord->order_id);
-        //         if ($getDataMidtrans->status_code == 200) {
-        //             $data = [
-        //                 'status' => "Lunas"
-        //             ];
-        //             Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran anda berhasil pada bulan ');
-        //         } elseif ($getDataMidtrans->status_code == 201) {
-        //             $data = [
-        //                 'status' => "Pending"
-        //             ];
-        //         } else {
-        //             $data = [
-        //                 'status' => "Failed"
-        //             ];
-        //         }
-        //         DB::table('payment')->where('order_id', $ord->order_id)->update($data);
-        //     }
-        // }
+         foreach ($getOrderId as $ord) {
+             if ($ord->order_id != null) {
+                 $getDataMidtrans = \Midtrans\Transaction::status($ord->order_id);
+                 if ($getDataMidtrans->status_code == 200) {
+                     $data = [
+                         'status' => "Lunas"
+                     ];
+                     Http::get('https://wa.dlhcode.com/send-message?api_key=' . Helper::apk()->token_whatsapp . '&sender=' . Helper::apk()->tlp . '&number=' . $ord->no_tlp . '&message=Terima kasih, pembayaran anda berhasil pada bulan ');
+                 } elseif ($getDataMidtrans->status_code == 201) {
+                     $data = [
+                         'status' => "Pending"
+                     ];
+                 } else {
+                     $data = [
+                         'status' => "Failed"
+                     ];
+                 }
+                 DB::table('payment')->where('order_id', $ord->order_id)->update($data);
+             }
+         }
 
         //Bulanan
         $cekBulanan = DB::select("SELECT p.tagihan_id, COUNT(p.status) as total FROM payment p LEFT JOIN users u on u.id=p.user_id WHERE u.nis = '$request->nis' AND p.status = 'Lunas' AND bulan_id is not null GROUP BY p.tagihan_id");
@@ -209,7 +209,7 @@ class PembayaranController extends Controller
 
 
 
-        $data['title'] = "Riwayat Pembayaran Spp";
+        $data['title'] = "Riwayat Pembayaran";
         // $data['id_tagihan'] = $id_tagihan;
 
         $getDataUser[0] = DB::select("select user_id, thajaran_id, t.kelas_id, u.nis from tagihan t left join users u on t.user_id=u.id where t.id = '$id_tagihan'");
@@ -249,7 +249,7 @@ class PembayaranController extends Controller
             // dd($key);
         }
         // dd($data);
-        $params['activity']    = "Tambah Pembayaran Spp";
+        $params['activity']    = "Tambah Pembayaran";
         $params['detail']    = "Tambah Pembayaran Spp dengan ID Tagihan '$request->tagihan_id' dan kelas Id '$request->kelas_id'";
         Helper::log_transaction($params);
         $getusers = DB::table('users')->where('id', $request->user_id)->first();

@@ -53,13 +53,21 @@
                                             </button>
                                         @endif
                                     </td>
+                                    <td>
+                                        @if ($a->status == 'Failed')
+                                            <button type="button" class="btn rounded-pill btn-icon btn-outline-danger"
+                                                data-bs-toggle="modal" data-bs-target="#delete{{ $a->id }}">
+                                                <span class="fa fa-trash"></span>
+                                            </button>
+                                        @endif
+                                    </td>
                                     <div class="modal fade" id="delete{{ $a->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="deletemodal" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="addNewDonaturLabel">Hapus Siswa
+                                                        <h5 class="modal-title" id="addNewDonaturLabel">Hapus Pembayaran Failed
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -163,7 +171,7 @@
         })
     
     </script>
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+    <script type="text/javascript" src="https://app.midtrans.com/snap/snap.js"
         data-client-key="{{ Helper::apk()->clientKey }}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript">

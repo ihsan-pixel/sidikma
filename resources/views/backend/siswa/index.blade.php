@@ -15,7 +15,7 @@
                     <tr>
                         <th>No</th>
                         <th>Image</th>
-                        <th>EWANUGK/KARTANU</th>
+                        <th>EWANUGK</th>
                         <th>Nama Lengkap</th>
                         <th>Email</th>
                         <th>Asal Madrasah</th>

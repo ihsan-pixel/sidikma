@@ -6,7 +6,7 @@
             <h5 class="mb-0" style="font-size: 40px">
                 <b>{{ $title }}</b>
             </h5>
-            <a href="/adminAdd" type="button" class="btn rounded-pill btn-primary justify-content-end"
+            <a href="/tenagaAdd" type="button" class="btn rounded-pill btn-primary justify-content-end"
                 style="margin-left: 70%;">Add</a>
         </div>
         <div class="container mt-4 ">
@@ -15,10 +15,11 @@
                     <tr>
                         <th>No</th>
                         <th>Image</th>
+                        <th>EWANUGK</th>
                         <th>Nama Lengkap</th>
                         <th>Email</th>
-                        <th>Nomor Telepon</th>
-                        <th>Role</th>
+                        <th>Asal Madrasah</th>
+                        <th>Status Kepegawaian</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -27,29 +28,23 @@
                     @php
                         $no = 1;
                     @endphp
-                    @foreach ($admin as $a)
+                    @foreach ($tenaga as $t)
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td width="auto">
-                                @if ($a->image != null)
-                                    <img src="{{ asset('') }}storage/images/users/{{ $a->image }}"
+                                @if ($t->image != null)
+                                    <img src="{{ asset('') }}storage/images/users/{{ $t->image }}"
                                         style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 @else
-                                    <img src="{{ asset('') }}storage/images/users/user.png"
+                                    <img src="{{ asset('') }}storage/images/users/users.png"
                                         style="width: 40px; height: 40px;border-radius: 50%" alt="Gambar Kosong">
                                 @endif
                             </td>
-
-                            <td width="auto">{{ $a->nama_lengkap }}</td>
-                            <td width="auto">{{ $a->email }}</td>
-                            <td width="auto">{{ $a->no_tlp }}</td>
-                            <td width="auto">
-                                @if ($a->role == 1)
-                                    Admin
-                                @else
-                                    Pengurus LP. Ma'arif NU
-                                @endif
-                            </td>
+                            <td width="auto">{{ $t->nis }}</td>
+                            <td width="auto">{{ $t->nama_lengkap }}</td>
+                            <td width="auto">{{ $t->email }}</td>
+                            <td width="auto">{{ $t->nama_kelas }}</td>
+                            <td width="auto">{{ $t->nama_jurusan }}</td>
                             <td width="auto">
                                 <label class="switch switch-primary">
                                     @if ($a->status == 'ON')
@@ -72,7 +67,8 @@
                                 </label>
                             </td>
                             <td>
-                                <a href="/admin/edit/{{ $a->id }}" type="button" class="btn btn-success">Edit</a>
+
+                                <a href="/tenaga/edit/{{ $a->id }}" type="button" class="btn btn-success">Edit</a>
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#delete{{ $a->id }}">Delete</button>
                             </td>
@@ -82,18 +78,18 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="addNewDonaturLabel">Hapus Admin
+                                                <h5 class="modal-title" id="addNewDonaturLabel">Hapus Guru/Pegawai
                                                 </h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Anda yakin ingin menghapus {{ $a->nama_lengkap }}</p>
+                                                <p>Anda yakin ingin menghapus {{ $t->nama_lengkap }}</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
-                                                <a href="{{ url('/admin/delete', $a->id) }} "
+                                                <a href="{{ url('/tenaga/delete', $a->id) }} "
                                                     class="btn btn-primary">Hapus</a>
                                             </div>
                                         </div>
@@ -106,26 +102,4 @@
             </table>
         </div>
     </div>
-    {{-- <script>
-        function setStatus(params) {
-
-            console.log(params);
-            $.ajax({
-                
-                type: "post",
-          
-                url: "{{ url('admin/changeStatus') }}/"+ params,
-              
-                
-
-                success: function(response) {
-
-                },
-                error: function() {
-                    alert("error");
-                }
-            });
-            
-        }
-    </script> --}}
 @endsection

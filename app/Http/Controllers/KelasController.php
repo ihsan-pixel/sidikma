@@ -111,7 +111,7 @@ class KelasController extends Controller
     }
     public function lulus()
     {
-        $data['title'] = "Kelulusan";
+        $data['title'] = "Pendidik & Tenaga Kependidikan";
 
         $data['kelas'] = DB::select("select * from kelas ORDER BY nama_kelas DESC LIMIT 1");
         $data['jurusan'] = DB::select("select * from jurusan");

@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="user-profile-header-banner" style="margin-bottom: -20%;">
-                    <img src="{{ asset('') }}storage/images/logo/{{ Helper::apk()->logo }}"
+                <div class="user-profile-header-banner" style="margin-bottom: 0%;">
+                    <img src="{{ asset('') }}storage/images/logo/logo sidikma gk.png"
                         style="width: 100%; height: 40%;" alt="Banner image" class="rounded-top">
                 </div>
                 <hr>
@@ -25,8 +25,8 @@
                         <div
                             class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                             <div class="user-profile-info"
-                                style="@if (request()->user()->image != null) margin-top: 37%;
-                                margin-left: -174%; @else  margin-top: 5%; @endif">
+                                style="@if (request()->user()->image != null) margin-top: 40%;
+                                margin-left: -125%; @else  margin-top: 5%; @endif">
                                 <h4>{{ $profile->nama_lengkap }}</h4>
                                 <ul
                                     class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
@@ -87,7 +87,7 @@
                                 @if ($profile->role == 1)
                                     Admin
                                 @elseif ($profile->role == 2)
-                                    Siswa
+                                    Guru/Pegawai
                                 @else
                                     Kepala Sekolah
                                 @endif
@@ -108,9 +108,9 @@
                         <small class="text-muted text-uppercase">Teams</small>
                         <ul class="list-unstyled mt-3 mb-0">
                             <li class="d-flex align-items-center mb-3"><i class="bx bx-home"></i><span
-                                    class="fw-semibold mx-2">Kelas:</span> <span>{{ $profile->nama_kelas }}</span></li>
+                                    class="fw-semibold mx-2">Asal Madrasah:</span> <span>{{ $profile->nama_kelas }}</span></li>
                             <li class="d-flex align-items-center mb-3"><i class="bx bx-building-house"></i><span
-                                    class="fw-semibold mx-2">Kelas:</span> <span>{{ $profile->nama_jurusan }}</span></li>
+                                    class="fw-semibold mx-2">Status Kepegawaian:</span> <span>{{ $profile->nama_jurusan }}</span></li>
                         </ul>
                     @endif
                 </div>
@@ -122,11 +122,10 @@
                     <small class="text-muted text-uppercase">Overview</small>
                     <ul class="list-unstyled mt-3 mb-0">
                         <li class="d-flex align-items-center mb-3"><i class="bx bx-check"></i><span
-                                class="fw-semibold mx-2">Total Siswa:</span> <span>{{ $totalsiswa }}</span></li>
+                                class="fw-semibold mx-2">Total Guru/Pegawai:</span> <span>{{ $totalsiswa }}</span></li>
                         <li class="d-flex align-items-center mb-3"><i class='bx bx-customize'></i><span
-                                class="fw-semibold mx-2">Total Kelas:</span> <span>{{ $totalkelas }}</span></li>
-                        <li class="d-flex align-items-center"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Total
-                                Jurusan:</span> <span>{{ $totaljurusan }}</span></li>
+                                class="fw-semibold mx-2">Total Madrasah/Sekolah:</span> <span>{{ $totalkelas }}</span></li>
+                        <li class="d-flex align-items-center"><i class="bx bx-user"></i><span class="fw-semibold mx-2">Total Status Kepegawaian:</span> <span>{{ $totaljurusan }}</span></li>
                     </ul>
                 </div>
             </div>
@@ -229,7 +228,7 @@
                 <div class="col-lg-12 col-xl-6">
                     <div class="card card-action mb-4">
                         <div class="card-header align-items-center">
-                            <h5 class="card-action-title mb-0">Teman Kelas</h5>
+                            <h5 class="card-action-title mb-0">Rekan se-Madrasah/Sekolah</h5>
                             <div class="card-action-element">
                                 {{-- <div class="dropdown">
                                     <button type="button" class="btn dropdown-toggle hide-arrow p-0"
@@ -285,7 +284,7 @@
                 <div class="col-lg-12 col-xl-6">
                     <div class="card card-action mb-4">
                         <div class="card-header align-items-center">
-                            <h5 class="card-action-title mb-0">Teman Jurusan</h5>
+                            <h5 class="card-action-title mb-0">Guru/Pegawai</h5>
                             <div class="card-action-element">
                                 {{-- <div class="dropdown">
                                     <button type="button" class="btn dropdown-toggle hide-arrow p-0"

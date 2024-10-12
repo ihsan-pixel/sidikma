@@ -17,6 +17,8 @@ class DashboardController extends Controller
         WHERE p.status = 'Lunas' GROUP BY p.user_id, u.nama_lengkap, p.user_id, u.kelas_id, u.alamat 
         ORDER BY total DESC LIMIT 7"
         );
+        $data['profile'] = DB::table('users')->select('users.*', 'kelas.nama_kelas', 'jurusan.nama_jurusan','ketugasan.ketugasan')->leftJoin('kelas', 'kelas.id', '=', 'users.kelas_id')->leftJoin('jurusan', 'jurusan.id', '=', 'users.jurusan_id')->leftJoin('ketugasan', 'ketugasan.id', '=', 'users.ketugasan')->where('users.id', request()->user()->id)->first();
+        $data['temankelas'] = DB::table('users')->where('role', 2)->where('kelas_id', request()->user()->kelas_id)->get();
         $data['totalById'] = request()->user()->role != 1 ?
             DB::table('payment')->where('user_id', request()->user()->id)->sum('nilai') :
             DB::table('payment')->sum('nilai');

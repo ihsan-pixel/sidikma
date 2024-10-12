@@ -31,7 +31,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="">EWANUGK/KARTANU/NAMA</label>
+                                        <label class="form-label" for="">EWANUGK/NAMA</label>
                                         <select class="form-select" name="nis" id="nis"
                                             aria-label="Default select example"></select>
                                     </div>
@@ -65,7 +65,7 @@
                                         <tbody>
 
                                             <tr>
-                                                <td>EWANUGK/KARTANU </td>
+                                                <td>EWANUGK</td>
                                                 <td>: <?php echo $siswa->nis; ?></td>
                                             </tr>
                                             <tr>
@@ -81,6 +81,10 @@
                                                 <td>: <?php echo $siswa->email; ?></td>
                                             </tr>
                                             <tr>
+                                                <td>TMT</td>
+                                                <td>: <?php echo $siswa->tmt; ?></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Nomor Telephone</td>
                                                 <td>: <?php echo $siswa->no_tlp; ?></td>
                                             </tr>
@@ -92,9 +96,7 @@
                                                 <td>Alamat</td>
                                                 <td>: <?php echo $siswa->alamat; ?></td>
                                             </tr>
-
-
-                                        </tbody>
+                                                                            </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -121,7 +123,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>NO</th>
-                                                    <th>Tahun Ajaran</th>
+                                                    <th>Tahun Anggaran</th>
                                                     <th>Asal Madrasah</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>
@@ -175,6 +177,77 @@
                         </div>
                     </div>
                 @endif
+                 @if ($pembayaran_bulanan != null)
+                    <div class="card-body">
+                        <div class="card shadow mb-4 border-bottom-danger" id="tagihanbulanan" value="0">
+                            <!-- Card Header - Accordion -->
+                            <a href="#tagihanbulan" class="d-block bg-danger border border-danger card-header py-3"
+                                data-toggle="collapse" role="button" aria-expanded="true"
+                                aria-controls="collapseCardExample">
+                                <h6 class="m-0 font-weight-bold text-white">Download SK</h6>
+                            </a>
+                            <!-- Card Content - Collapse -->
+
+                            <div class="collapse show" id="tagihanbulan">
+
+                                <div class="table-responsive">
+                                    <div class="card-body">
+                                        <table class="table table-striped" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>NO</th>
+                                                    <th>Tahun Anggaran</th>
+                                                    <th>Asal Madrasah</th>
+                                                    <th>Jenis Pembayaran</th>
+                                                    <th>Dibayar</th>
+                                                    <th class="text-center">Status Bayar</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                            $id = 1;
+
+                            foreach ($pembayaran_bulanan as $u) {
+                            ?>
+                                                <tr>
+                                                    <td><?php echo $id++; ?></td>
+                                                    <td><?php echo $u->tahun; ?></td>
+                                                    <td><?php echo $u->nama_kelas; ?></td>
+                                                    <td><?php echo $u->pembayaran; ?></td>
+                                                    <td>Rp. {{ number_format($u->total_bayar) }}</td>
+                                                    <td class="text-center">
+                                                        @if ($u->status_bayar == 'Belum Lunas')
+                                                            <span class="badge bg-label-danger" >Belum
+                                                                Lunas</span>
+                                                        @else
+                                                            <span class="badge bg-label-primary"
+                                                                style="width: 57%;">Lunas</span>
+                                                        @endif
+                                                    </td>
+                                                    <td hidden id="getidtagihan">{{ $u->id }}</td>
+
+                                                    <td>
+                                                        @if ($u->status_bayar == 'Belum Lunas')
+                                                                <a href="/bulananPdf/{{$u->id}}" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
+                                                        @else
+                                                            <button onclick="printExcelById()"
+                                                                class="btn btn-success">Excel</button>
+                                                                <a href="/bulananPdf/{{$u->id}}" target="_blank"
+                                                                    class="btn btn-danger">PDF</a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 @if ($pembayaran_lainya != null)
                     <div class="card-body">
                         <div class="card shadow mb-4 border-bottom-info" id="tagihanlainya" value="0">
@@ -193,7 +266,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>NO</th>
-                                                    <th>Tahun Ajaran</th>
+                                                    <th>Tahun Anggaran</th>
                                                     <th>Asal Madrasah</th>
                                                     <th>Jenis Pembayaran</th>
                                                     <th>Dibayar</th>

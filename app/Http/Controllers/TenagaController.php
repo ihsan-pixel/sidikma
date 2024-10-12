@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
-class SiswaController extends Controller
+class TenagaController extends Controller
 {
     public function index()
     {
-        $data['title'] = "Guru/Pegawai";
-        $data['siswa'] = DB::select("select u.*, k.nama_kelas, j.nama_jurusan from users u left join kelas k on u.kelas_id=k.id left join jurusan j on u.jurusan_id=j.id where role = '2' and u.status != 'Lulus'");
-        return view('backend.siswa.index', $data);
+        $data['title'] = "Tenaga Pendidik";
+        $data['tenaga'] = DB::select("select u.*, k.nama_kelas, j.nama_jurusan from users u left join kelas k on u.kelas_id=k.id left join jurusan j on u.jurusan_id=j.id where role = '2' and u.status != 'Lulus'");
+        return view('backend.tenaga.index', $data);
     }
     public function add()
     {
@@ -25,9 +25,9 @@ class SiswaController extends Controller
         $data['kelas'] = DB::select("select * from kelas");
         $data['jurusan'] = DB::select("select * from jurusan");
         $data['ketugasan'] = DB::select("select * from ketugasan");
-        return view('backend.siswa.add', $data);
+        return view('backend.tenaga.add', $data);
     }
-    public function addSiswa(Request $request)
+    public function addTenaga(Request $request)
     {
         $file_path = public_path() . '/storage/images/users/' . $request->image;
         File::delete($file_path);
@@ -61,18 +61,18 @@ class SiswaController extends Controller
         }
         DB::table('users')->insert($data);
         Alert::success('Guru/Pegawai berhasil ditambah');
-        return redirect('siswa');
+        return redirect('tenaga');
     }
     public function edit($id)
     {
         $data['title'] = "Edit Guru/Pegawai";
         $data['status'] = ['ON', 'OFF'];
-        $data['siswa'] = DB::table('users')->where('id', $id)->first();
+        $data['tenaga'] = DB::table('users')->where('id', $id)->first();
         $data['kelas'] = DB::select("select * from kelas");
         $data['jurusan'] = DB::select("select * from jurusan");
         $data['ketugasan'] = DB::select("select * from ketugasan");
         
-        return view('backend.siswa.edit', $data);
+        return view('backend.tenaga.edit', $data);
     }
     public function editProses(Request  $request)
     {
@@ -135,7 +135,7 @@ class SiswaController extends Controller
 
             DB::table('users')->where('id', $id)->delete();
             Alert::success('Guru/Pegawai berhasil dihapus');
-            return redirect()->route('siswa');
+            return redirect()->route('tenaga');
         } catch (Exception $e) {
             return response([
                 'success' => false,

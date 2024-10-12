@@ -6,25 +6,22 @@
             <h5 class="mb-0" style="font-size: 40px">
                 <b>{{ $title }}</b>
             </h5>
-            <a href="/kelas/add" type="button" class="btn rounded-pill btn-primary justify-content-end"
-                style="margin-left: 70%;">Add</a>
+            <button type="button" class="btn rounded-pill btn-success justify-content-end"
+                style="margin-left: 70%;">Excel</button>
         </div>
         <div class="container mt-4 ">
             <table id="datatable" class="table table-striped ">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama Madrasah/Sekolah</th>
-                        <th>Jml Siswa Kelas 1</th>
-                        <th>Jml Siswa Kelas 2</th>
-                        <th>Jml Siswa Kelas 3</th>
-                        <th>Jml Siswa Kelas 4</th>
-                        <th>Jml Siswa Kelas 5</th>
-                        <th>Jml Siswa Kelas 6</th>
-                        <th>Jml Siswa Kelas 7</th>
-                        <th>Jml Siswa Kelas 8</th>
-                        <th>Jml Siswa Kelas 9</th>
-                        <th>Total Siswa</th>
+                        <th>Image</th>
+                        <th>Nis</th>
+                        <th>Nama Lengkap</th>
+                        <th>Email</th>
+                        <th>Kelas</th>
+                        <th>Jurusan</th>
+                        <th>Status</th>
+                        <th>Tunggakan</th>
 
                     </tr>
                 </thead>

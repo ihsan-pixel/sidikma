@@ -46,9 +46,31 @@
                 </ul>
             </li>
             <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon fa-solid fa-layer-group"></i>
+                    <div>Kelembagaan</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="/tenaga" class="menu-link">
+                            <div>Tenaga Pendidik</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/alumni" class="menu-link">
+                            <div>Kesiswaan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/broadcast" class="menu-link">
+                            <div>Sarana & Prasarana</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="menu-item">
                 <a href="/broadcast" class="menu-link ">
                     <i class="menu-icon tf-icons bx bxl-whatsapp"></i>
-
                     <div>Broadcast</div>
                 </a>
             </li>
@@ -110,7 +132,7 @@
                         </a>
                     </li> --}}
                 </ul>
-            </li>
+            </li> 
 
 
             {{-- <li class="menu-item">
@@ -129,6 +151,29 @@
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div>Dashboards</div>
                 </a>
+            </li>
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-book"></i>
+                    <div>Kelembagaan</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="/kelas/lulus" class="menu-link">
+                            <div>Tenaga Pendidik</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/alumni" class="menu-link">
+                            <div>Kesiswaan</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/broadcast" class="menu-link">
+                            <div>Sarana & Prasarana</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="menu-item">
                 <a href="/pembayaran/search?&kelas_id={{ request()->user()->kelas_id }}&nis={{ request()->user()->nis }}"
